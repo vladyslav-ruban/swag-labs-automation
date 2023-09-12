@@ -2,12 +2,15 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/login-page';
 import { InventoryPage } from '../pages/inventory-page';
 
+const username = process.env.USERNAME ?? "";
+const password = process.env.PASSWORD ?? "";
+
 let inventoryPage;
 
 test.beforeEach(async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goTo();
-  await loginPage.login('standard_user', 'secret_sauce');
+  await loginPage.login(username, password);
   inventoryPage = new InventoryPage(page);
 });
 
