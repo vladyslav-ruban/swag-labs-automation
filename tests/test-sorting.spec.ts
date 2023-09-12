@@ -16,25 +16,33 @@ test.afterEach(async ({ page }) => {
 });
 
 test('sorting prices low to high', async ({ page }) => {
-  await inventoryPage.sortProductsLowToHigh();
-  const prices = await inventoryPage.getAllProductPrices();
+  await inventoryPage.sortByPriceAscending();
+  const prices = await inventoryPage.getAllPrices();
   const sortedPrices = [...prices].sort((a, b) => a - b);
 
   expect(prices).toEqual(sortedPrices);
 });
 
 test('sorting prices high to low', async ({ page }) => {
-  await inventoryPage.sortProductsHighToLow();
-  const prices = await inventoryPage.getAllProductPrices();
+  await inventoryPage.sortByPriceDescending();
+  const prices = await inventoryPage.getAllPrices();
   const sortedPrices = [...prices].sort((a, b) => b - a);
 
   expect(prices).toEqual(sortedPrices);
 });
 
 test('sorting names from a to z', async ({ page }) => {
+  await inventoryPage.sortByNameAscending();
+  const names = await inventoryPage.getAllNames();
+  const sortedNames = [...names].sort((a, b) => a - b);
 
+  expect(names).toEqual(sortedNames);
 });
 
 test('sorting names from z to a', async ({ page }) => {
-  
+  await inventoryPage.sortByNameDescending();
+  const names = await inventoryPage.getAllNames();
+  const sortedNames = [...names].sort((a, b) => b - a);
+
+  expect(names).toEqual(sortedNames);
 });
