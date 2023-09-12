@@ -1,10 +1,12 @@
 import { expect, type Locator, type Page, ElementHandle } from '@playwright/test';
 
+const url = process.env.URL ?? "";
+
 export class InventoryPage {
     private readonly page: Page;
     private readonly sortDropdown: Locator;
 
-    private readonly pageUrl = 'https://www.saucedemo.com/inventory.html';
+    private readonly pageUrl = `${url}/inventory.html`;
     private readonly activeOptionLocator: string = 'xpath=//span[@class="select_container"]/span[@class="active_option"]';
 
     constructor(page: Page) {
