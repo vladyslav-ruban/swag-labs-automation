@@ -10,6 +10,7 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
+        page.waitForURL(url);
         this.usernameField = page.locator('[data-test="username"]');
         this.passwordField = page.locator('[data-test="password"]');
         this.loginButton = page.locator('[data-test="login-button"]');
